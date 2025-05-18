@@ -8,12 +8,12 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Products")
+@Table(name = "users")
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class Product {
+@NoArgsConstructor
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,10 +23,10 @@ public class Product {
     private String name;
 
     @Column(nullable = false)
-    private String description;
+    private String email;
 
     @Column(nullable = false)
-    private Double price;
+    private String password;
 
     @CreationTimestamp
     @Column(updatable = false, nullable = false)

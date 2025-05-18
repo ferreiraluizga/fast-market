@@ -16,16 +16,17 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    public User register(String name, String email, String password) {
+    public User register(String name, String email, String username, String password) {
         String encryptedPassword = passwordEncoder.encode(password);
         User user = new User();
         user.setName(name);
         user.setEmail(email);
+        user.setUsername(username);
         user.setPassword(encryptedPassword);
         return userRepository.save(user);
     }
 
-    public Optional<User> findByEmail(String email) {
-        return userRepository.findByEmail(email);
+    public Optional<User> findByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 }

@@ -1,7 +1,7 @@
 package com.example.fastmarket.mapper;
 
-import com.example.fastmarket.dto.ProductRequest;
-import com.example.fastmarket.dto.ProductResponse;
+import com.example.fastmarket.dto.request.ProductRequest;
+import com.example.fastmarket.dto.response.ProductResponse;
 import com.example.fastmarket.model.Product;
 
 public class ProductMapper {
@@ -17,9 +17,9 @@ public class ProductMapper {
 
     public static Product toEntity(ProductRequest dto) {
         Product product = new Product();
-        product.setName(dto.getName());
-        product.setDescription(dto.getDescription());
-        product.setPrice(dto.getPrice());
+        product.setName(dto.name());
+        product.setDescription(dto.description());
+        product.setPrice(dto.price());
         return product;
     }
 

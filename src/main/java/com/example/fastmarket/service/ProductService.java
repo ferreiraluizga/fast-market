@@ -1,7 +1,7 @@
 package com.example.fastmarket.service;
 
-import com.example.fastmarket.dto.ProductRequest;
-import com.example.fastmarket.dto.ProductResponse;
+import com.example.fastmarket.dto.request.ProductRequest;
+import com.example.fastmarket.dto.response.ProductResponse;
 import com.example.fastmarket.mapper.ProductMapper;
 import com.example.fastmarket.model.Product;
 import com.example.fastmarket.repository.ProductRepository;
@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -34,9 +33,9 @@ public class ProductService {
 
     public ProductResponse update(Long id, ProductRequest dto) {
         Product product = productRepository.findById(id).orElseThrow(() -> new RuntimeException("Produto não encontrado"));
-        product.setName(dto.getName());
-        product.setDescription(dto.getDescription());
-        product.setPrice(dto.getPrice());
+        product.setName(dto.name());
+        product.setDescription(dto.description());
+        product.setPrice(dto.price());
         return ProductMapper.toResponseDTO(productRepository.save(product));
     }
 

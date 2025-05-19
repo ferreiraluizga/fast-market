@@ -1,7 +1,7 @@
 package com.example.fastmarket.controller;
 
-import com.example.fastmarket.dto.ProductRequest;
-import com.example.fastmarket.dto.ProductResponse;
+import com.example.fastmarket.dto.request.ProductRequest;
+import com.example.fastmarket.dto.response.ProductResponse;
 import com.example.fastmarket.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

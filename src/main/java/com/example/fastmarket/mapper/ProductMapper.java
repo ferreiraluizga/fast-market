@@ -2,7 +2,7 @@ package com.example.fastmarket.mapper;
 
 import com.example.fastmarket.dto.request.ProductRequest;
 import com.example.fastmarket.dto.response.ProductResponse;
-import com.example.fastmarket.model.Product;
+import com.example.fastmarket.entities.Product;
 
 public class ProductMapper {
 

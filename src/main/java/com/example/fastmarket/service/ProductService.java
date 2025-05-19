@@ -3,7 +3,7 @@ package com.example.fastmarket.service;
 import com.example.fastmarket.dto.request.ProductRequest;
 import com.example.fastmarket.dto.response.ProductResponse;
 import com.example.fastmarket.mapper.ProductMapper;
-import com.example.fastmarket.model.Product;
+import com.example.fastmarket.entities.Product;
 import com.example.fastmarket.repository.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

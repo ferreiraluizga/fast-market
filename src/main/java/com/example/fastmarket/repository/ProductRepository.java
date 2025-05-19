@@ -1,6 +1,6 @@
 package com.example.fastmarket.repository;
 
-import com.example.fastmarket.model.Product;
+import com.example.fastmarket.entities.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

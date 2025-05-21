@@ -24,7 +24,7 @@ public class Supplier {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "cnpj", nullable = false)
+    @Column(name = "cnpj", nullable = false, unique = true)
     private String cnpj;
 
     @Column(name = "phone", nullable = false)

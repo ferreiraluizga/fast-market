@@ -3,10 +3,12 @@ package com.example.fastmarket.mapper;
 import com.example.fastmarket.dto.request.SupplierRequest;
 import com.example.fastmarket.dto.response.SupplierResponse;
 import com.example.fastmarket.entities.Supplier;
+import org.springframework.stereotype.Component;
 
+@Component
 public class SupplierMapper {
 
-    public static SupplierResponse toResponseDTO(Supplier supplier) {
+    public SupplierResponse toResponseDTO(Supplier supplier) {
         return new SupplierResponse(
                 supplier.getId(),
                 supplier.getName(),
@@ -16,7 +18,7 @@ public class SupplierMapper {
         );
     }
 
-    public static Supplier toEntity(SupplierRequest dto) {
+    public Supplier toEntity(SupplierRequest dto) {
         Supplier supplier = new Supplier();
         supplier.setName(dto.name());
         supplier.setCnpj(dto.cnpj());

@@ -19,15 +19,18 @@ public class ProductService {
     @Autowired
     private final ProductRepository productRepository;
 
+    @Autowired
+    private final ProductMapper productMapper;
+
     public ProductResponse save(ProductRequest dto) {
-        Product product = ProductMapper.toEntity(dto);
-        return ProductMapper.toResponseDTO(productRepository.save(product));
+        Product product = productMapper.toEntity(dto);
+        return productMapper.toResponseDTO(productRepository.save(product));
     }
 
     public List<ProductResponse> getAll() {
         return productRepository.findAll()
                 .stream()
-                .map(ProductMapper::toResponseDTO)
+                .map(productMapper::toResponseDTO)
                 .collect(Collectors.toList());
     }
 
@@ -36,7 +39,7 @@ public class ProductService {
         product.setName(dto.name());
         product.setDescription(dto.description());
         product.setPrice(dto.price());
-        return ProductMapper.toResponseDTO(productRepository.save(product));
+        return productMapper.toResponseDTO(productRepository.save(product));
     }
 
     public void delete(Long id) {

@@ -19,15 +19,18 @@ public class BrandService {
     @Autowired
     private final BrandRepository brandRepository;
 
+    @Autowired
+    private final BrandMapper brandMapper;
+
     public BrandResponse save(BrandRequest dto) {
-        Brand brand = BrandMapper.toEntity(dto);
-        return BrandMapper.toResponseDTO(brandRepository.save(brand));
+        Brand brand = brandMapper.toEntity(dto);
+        return brandMapper.toResponseDTO(brandRepository.save(brand));
     }
 
     public List<BrandResponse> getAll() {
         return brandRepository.findAll()
                 .stream()
-                .map(BrandMapper::toResponseDTO)
+                .map(brandMapper::toResponseDTO)
                 .collect(Collectors.toList());
     }
 
@@ -35,7 +38,7 @@ public class BrandService {
         Brand brand = brandRepository.findById(id).orElseThrow(() -> new RuntimeException("Produto não encontrado"));
         brand.setName(dto.name());
         brand.setDescription(dto.description());
-        return BrandMapper.toResponseDTO(brandRepository.save(brand));
+        return brandMapper.toResponseDTO(brandRepository.save(brand));
     }
 
     public void delete(Long id) {

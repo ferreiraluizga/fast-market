@@ -3,10 +3,12 @@ package com.example.fastmarket.mapper;
 import com.example.fastmarket.dto.request.ProductRequest;
 import com.example.fastmarket.dto.response.ProductResponse;
 import com.example.fastmarket.entities.Product;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ProductMapper {
 
-    public static ProductResponse toResponseDTO(Product product) {
+    public ProductResponse toResponseDTO(Product product) {
         return new ProductResponse(
                 product.getId(),
                 product.getName(),
@@ -15,7 +17,7 @@ public class ProductMapper {
         );
     }
 
-    public static Product toEntity(ProductRequest dto) {
+    public Product toEntity(ProductRequest dto) {
         Product product = new Product();
         product.setName(dto.name());
         product.setDescription(dto.description());

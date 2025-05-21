@@ -21,21 +21,33 @@ public class Product {
     @Column(name = "product_id")
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(nullable = false)
+    @Column(name = "description", nullable = false)
     private String description;
 
-    @Column(nullable = false)
+    @Column(name = "price", nullable = false)
     private Double price;
 
+    @ManyToOne
+    @JoinColumn(name = "brand_id", referencedColumnName = "brand_id", nullable = false)
+    private Brand brand;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id", referencedColumnName = "category_id", nullable = false)
+    private Category category;
+
+    @ManyToOne
+    @JoinColumn(name = "supplier_id", referencedColumnName = "supplier_id", nullable = false)
+    private Supplier supplier;
+
     @CreationTimestamp
-    @Column(updatable = false, nullable = false)
+    @Column(name = "createdAt", updatable = false, nullable = false)
     private Instant createdAt;
 
     @UpdateTimestamp
-    @Column(nullable = false)
+    @Column(name = "updatedAt", nullable = false)
     private Instant updatedAt;
 
 }

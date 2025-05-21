@@ -24,10 +24,10 @@ public class User {
     @Column(name = "user_id")
     private UUID user_id;
 
-    @Column(unique = true, nullable = false)
+    @Column(name = "username", unique = true, nullable = false)
     private String username;
 
-    @Column(nullable = false)
+    @Column(name = "password", nullable = false)
     private String password;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -39,11 +39,11 @@ public class User {
     private Set<Role> roles;
 
     @CreationTimestamp
-    @Column(updatable = false, nullable = false)
+    @Column(name = "createdAt", updatable = false, nullable = false)
     private Instant createdAt;
 
     @UpdateTimestamp
-    @Column(nullable = false)
+    @Column(name = "updatedAt", nullable = false)
     private Instant updatedAt;
 
     public boolean isLoginCorrect(LoginRequest loginRequest, PasswordEncoder passwordEncoder) {

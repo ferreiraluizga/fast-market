@@ -2,7 +2,6 @@ package com.example.fastmarket.controller;
 
 import com.example.fastmarket.dto.request.BrandRequest;
 import com.example.fastmarket.dto.response.BrandResponse;
-import com.example.fastmarket.entities.Brand;
 import com.example.fastmarket.service.BrandService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

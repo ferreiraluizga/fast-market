@@ -35,6 +35,11 @@ public class SupplierService {
                 .collect(Collectors.toList());
     }
 
+    public SupplierResponse getById(Long id) {
+        Supplier supplier = supplierRepository.findById(id).orElseThrow(() -> new RuntimeException("Fornecedor não encontrado"));
+        return supplierMapper.toResponseDTO(supplier);
+    }
+
     public SupplierResponse getByCnpj(String cnpj) {
         Supplier supplier = supplierRepository.findByCnpj(cnpj).orElseThrow(() -> new RuntimeException("Fornecedor não encontrado"));
         return supplierMapper.toResponseDTO(supplier);

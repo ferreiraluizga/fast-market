@@ -17,7 +17,7 @@ public class ProductController {
 
     private final ProductService productService;
 
-    @PostMapping
+    @PostMapping("/save")
     public ResponseEntity<ProductResponse> save(@RequestBody ProductRequest dto) {
         ProductResponse response = productService.save(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
@@ -29,13 +29,18 @@ public class ProductController {
         return ResponseEntity.ok(products);
     }
 
-    @PutMapping("/{id}")
+    @GetMapping("/{id}")
+    public ResponseEntity<ProductResponse> getById(Long id) {
+        return ResponseEntity.ok(productService.getById(id));
+    }
+
+    @PutMapping("/update/{id}")
     public ResponseEntity<ProductResponse> update(@PathVariable Long id, @RequestBody ProductRequest dto) {
         ProductResponse response = productService.update(id, dto);
         return ResponseEntity.ok(response);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> delete(Long id) {
         productService.delete(id);
         return ResponseEntity.noContent().build();

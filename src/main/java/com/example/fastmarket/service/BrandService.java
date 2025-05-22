@@ -34,6 +34,11 @@ public class BrandService {
                 .collect(Collectors.toList());
     }
 
+    public BrandResponse getById(Long id) {
+        Brand brand = brandRepository.findById(id).orElseThrow(() -> new RuntimeException("Marca não encontrada"));
+        return brandMapper.toResponseDTO(brand);
+    }
+
     public BrandResponse update(Long id, BrandRequest dto) {
         Brand brand = brandRepository.findById(id).orElseThrow(() -> new RuntimeException("Marca não encontrada"));
         brand.setName(dto.name());

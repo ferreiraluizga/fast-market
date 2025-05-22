@@ -17,7 +17,7 @@ public class SupplierController {
 
     private final SupplierService supplierService;
 
-    @PostMapping
+    @PostMapping("/save")
     public ResponseEntity<SupplierResponse> save(@RequestBody SupplierRequest dto) {
         SupplierResponse response = supplierService.save(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
@@ -29,18 +29,24 @@ public class SupplierController {
         return ResponseEntity.ok(suppliers);
     }
 
-    @GetMapping("/{cnpj}")
+    @GetMapping("/{id}")
+    public ResponseEntity<SupplierResponse> getById(Long id) {
+        SupplierResponse response = supplierService.getById(id);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/cnpj/{cnpj}")
     public ResponseEntity<SupplierResponse> getByCnpj(String cnpj) {
         return ResponseEntity.ok(supplierService.getByCnpj(cnpj));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<SupplierResponse> update(@PathVariable Long id, @RequestBody SupplierRequest dto) {
         SupplierResponse response = supplierService.update(id, dto);
         return ResponseEntity.ok(response);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> delete(Long id) {
         supplierService.delete(id);
         return ResponseEntity.noContent().build();

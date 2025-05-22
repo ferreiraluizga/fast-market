@@ -34,6 +34,11 @@ public class CategoryService {
                 .collect(Collectors.toList());
     }
 
+    public CategoryResponse getById(Long id) {
+        Category category = categoryRepository.findById(id).orElseThrow(() -> new RuntimeException("Categoria não encontrada"));
+        return categoryMapper.toResponseDTO(category);
+    }
+
     public CategoryResponse update(Long id, CategoryRequest dto) {
         Category category = categoryRepository.findById(id).orElseThrow(() -> new RuntimeException("Categoria não encontrada"));
         category.setName(dto.name());

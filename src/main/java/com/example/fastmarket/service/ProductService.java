@@ -34,6 +34,11 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
+    public ProductResponse getById(Long id) {
+        Product product = productRepository.findById(id).orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+        return productMapper.toResponseDTO(product);
+    }
+
     public ProductResponse update(Long id, ProductRequest dto) {
         Product product = productRepository.findById(id).orElseThrow(() -> new RuntimeException("Produto não encontrado"));
         product.setName(dto.name());

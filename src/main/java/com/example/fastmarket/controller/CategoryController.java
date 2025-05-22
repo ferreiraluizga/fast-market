@@ -17,7 +17,7 @@ public class CategoryController {
 
     private final CategoryService categoryService;
 
-    @PostMapping
+    @PostMapping("/save")
     public ResponseEntity<CategoryResponse> save(@RequestBody CategoryRequest dto) {
         CategoryResponse response = categoryService.save(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
@@ -29,13 +29,18 @@ public class CategoryController {
         return ResponseEntity.ok(categories);
     }
 
-    @PutMapping("/{id}")
+    @GetMapping("/{id}")
+    public ResponseEntity<CategoryResponse> getById(Long id) {
+        return ResponseEntity.ok(categoryService.getById(id));
+    }
+
+    @PutMapping("/update/{id}")
     public ResponseEntity<CategoryResponse> update(@PathVariable Long id, @RequestBody CategoryRequest dto) {
         CategoryResponse response = categoryService.update(id, dto);
         return ResponseEntity.ok(response);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> delete(Long id) {
         categoryService.delete(id);
         return ResponseEntity.noContent().build();

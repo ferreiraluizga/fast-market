@@ -18,7 +18,7 @@ public class BrandController {
 
     private final BrandService brandService;
 
-    @PostMapping
+    @PostMapping("/save")
     public ResponseEntity<BrandResponse> save(@RequestBody BrandRequest dto) {
         BrandResponse response = brandService.save(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
@@ -30,13 +30,18 @@ public class BrandController {
         return ResponseEntity.ok(brands);
     }
 
-    @PutMapping("/{id}")
+    @GetMapping("/{id}")
+    public ResponseEntity<BrandResponse> getById(Long id) {
+        return ResponseEntity.ok(brandService.getById(id));
+    }
+
+    @PutMapping("/update/{id}")
     public ResponseEntity<BrandResponse> update(@PathVariable Long id, @RequestBody BrandRequest dto) {
         BrandResponse response = brandService.update(id, dto);
         return ResponseEntity.ok(response);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> delete(Long id) {
         brandService.delete(id);
         return ResponseEntity.noContent().build();

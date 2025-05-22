@@ -33,7 +33,4 @@ public class Supplier {
     @Column(name = "email", nullable = false)
     private String email;
 
-    @OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Product> products;
-
 }

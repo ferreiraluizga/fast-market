@@ -27,7 +27,4 @@ public class Brand {
     @Column(name = "description", nullable = false)
     private String description;
 
-    @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Product> products;
-
 }
